@@ -80,7 +80,7 @@ btn.bind("<1>", click_del)
 btn.grid(row=5, column=0)
 
 btn = tk.Button(root, text="Num", font=("", 30), width=4, height=2)
-btn.bind("<1>", click_del)
+btn.bind("<1>", click_Num)
 btn.grid(row=1, column=0)
 
 root.mainloop()
