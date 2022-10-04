@@ -34,7 +34,7 @@ def click_k1(event):
             entry.insert(tk.END, "-")
             count1 += 1
     else:
-        pass
+        pass 
 
 def click_del(event):
     entry.delete(0,tk.END)
