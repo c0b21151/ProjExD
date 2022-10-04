@@ -40,7 +40,7 @@ def click_del(event):
     entry.delete(0,tk.END)
 
 def click_Num(event):
-    pass
+    pass 
 
 root = tk.Tk()
 root.geometry("380x600")
