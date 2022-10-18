@@ -11,5 +11,6 @@ tori = tk.PhotoImage(file="ex03/fig/3.png")
 cx, cy = 300, 400
 canv.create_image(cx, cy, image=tori, tag="tori") #3
 
+key = "" #現在押されているキーを表す　#4
 
 root.mainloop()
