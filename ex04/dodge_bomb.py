@@ -1,5 +1,4 @@
 import pygame as pg
-from pygame.locals import *
 import sys
 import random
 import time
@@ -139,11 +138,7 @@ def main():
 
         scrn_sfc.blit(bom_sfc, bom_rct) # 練習５
         scrn_sfc.blit(oji_gif, oji_gif_rct)
-        if k_uimg.colliderect(bom_rct):
-            time.sleep(0.5)
-            game_over()
-            return
-        if k_uimg.colliderect(oji_gif_rct):
+        if k_uimg.colliderect(bom_rct) or k_uimg.colliderect(oji_gif_rct):
             time.sleep(0.5)
             game_over()
             return
@@ -151,9 +146,6 @@ def main():
         pg.display.update()
         clock.tick(1000) # 練習２
         
-
-
-
 if __name__ == "__main__":
     pg.init
     start() # start()を起動
