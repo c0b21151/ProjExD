@@ -2,6 +2,20 @@ import pygame as pg
 import sys
 from random import randint
 
+# 練習７
+def check_bound(obj_rct, scr_rct):
+    """
+    obj_rct: こうかとんrct　または爆弾rct
+    scr_rct: スクリーンrct
+    領域内: +1　領域外: -1
+    """
+    yoko, tate = 1, 1
+    if obj_rct.left < scr_rct.left or scr_rct.right < obj_rct.right:
+        yoko = -1
+    if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
+        tate = -1
+    return yoko, tate
+
 def main():
     # 練習１
     pg.display.set_caption("逃げろ！こうかとん")
@@ -24,6 +38,9 @@ def main():
     bom_rct.centerx = randint(0, scrn_rct.width)
     bom_rct.centery = randint(0, scrn_rct.height)
 
+    # 練習６
+    vx, vy = 1, 1
+    
     clock = pg.time.Clock()
 
     while True:
@@ -42,9 +59,31 @@ def main():
         if key_lst[pg.K_RIGHT]:# こうかとんの縦座標を +1
             k_uimg.centerx +=1
         
+        yoko, tate = check_bound(k_uimg, scrn_rct)
+        if yoko == -1:
+            if key_lst[pg.K_LEFT]:
+                k_uimg.centerx += 1
+            if key_lst[pg.K_RIGHT]:
+                k_uimg.centerx -= 1
+        elif tate == -1:
+            if key_lst[pg.K_UP]:
+                k_uimg.centery += 1
+            if key_lst[pg.K_DOWN]:
+                k_uimg.centery -= 1
+        # elif yoko == -1 and tate == -1:
+        #     if key_lst[]
         scrn_sfc.blit(k_img, k_uimg) # 練習３
 
+        # 練習７
+        byoko, btate = check_bound(bom_rct, scrn_rct)
+        vx *= byoko
+        vy *= btate
+
+        bom_rct.move_ip(vx, vy)
         scrn_sfc.blit(bom_sfc, bom_rct) # 練習５
+
+        if k_uimg.colliderect(bom_rct):
+            return
 
         pg.display.update()
         clock.tick(1000) # 練習２
