@@ -63,15 +63,27 @@ def main():
         if yoko == -1:
             if key_lst[pg.K_LEFT]:
                 k_uimg.centerx += 1
+                if tate == -1:
+                    if key_lst[pg.K_UP]:
+                        k_uimg.centery += 1
+                    if key_lst[pg.K_DOWN]:
+                        k_uimg.centery -= 1
+
             if key_lst[pg.K_RIGHT]:
                 k_uimg.centerx -= 1
+                if tate == -1:
+                    if key_lst[pg.K_UP]:
+                        k_uimg.centery += 1
+                    if key_lst[pg.K_DOWN]:
+                        k_uimg.centery -= 1
+
         elif tate == -1:
             if key_lst[pg.K_UP]:
                 k_uimg.centery += 1
             if key_lst[pg.K_DOWN]:
                 k_uimg.centery -= 1
-        # elif yoko == -1 and tate == -1:
-        #     if key_lst[]
+            
+
         scrn_sfc.blit(k_img, k_uimg) # 練習３
 
         # 練習７
